@@ -33,18 +33,18 @@ export async function fetchPodcasts(setPodcasts, setError, setLoading) {
  * Handles loading, error and successful data response via provided state setters. 
  * 
  * @param {string} id - Unique podcast detailed page id.
- * @param {Function} setShow - State setter function to update podcast page.
+ * @param {Function} setPodcast - State setter function to update podcast page.
  * @param {Function} setError - State setter function to update the error message (string).
  * @param {Function} setLoading State setter function to toggle the loading state (boolean).
  * 
  * @returns {Promise<void>} A promise that resolves when the fetch process completes.
  */
-export async function fetchSinglePodcast(id, setShow, setError, setLoading) {
+export async function fetchSinglePodcast(id, setPodcast, setError, setLoading) {
   try{
     const res = await fetch(`https://podcast-api.netlify.app/id/${id}`);
      if (!res.ok) throw new Error(`${res.status}`);
     const data = await res.json();
-    setShow(data);
+    setPodcast(data);
   } catch (err) {
     console.error(`Failed to fetch podcast details ${id}:`, err);
     setError(err.message);

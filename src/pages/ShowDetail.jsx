@@ -17,7 +17,7 @@ export default function ShowDetail() {
     const { image, genres } = location.state || {}; 
 
 
-    const [podcast, setPodcast] = useState([]);
+    const [podcast, setPodcast] = useState(null);
     const[loading, setLoading] = useState(true); 
     const [error, setError] = useState(null);
 
@@ -34,7 +34,7 @@ export default function ShowDetail() {
             <Error message = {error} />
         )}
 
-        {!loading && !error && (
+        {!loading && !error && podcast && (
             <>
             {image && <img src={image} alt="Podcast Cover" />}
             <PodcastDetail podcast = {podcast} genres = {genres} image={image} />

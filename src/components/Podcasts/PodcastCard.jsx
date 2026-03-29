@@ -19,7 +19,7 @@ export default function PodcastCard({ podcast, genres }) {
  
   return (
     <div className="card">
-      <Link to = {`/show/:id`}
+      <Link to = {`/show/${podcast.id}`}
       state={{ image: podcast.image, genres }}
       >
         <img src={podcast.image} alt={podcast.title} />
