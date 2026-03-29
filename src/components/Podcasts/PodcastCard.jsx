@@ -1,5 +1,5 @@
 import { formatDate } from "../../utils/formatDate.js";
-
+import { GenreTags } from "../../components/UI/GenreTags.jsx"
 /**
  * Renders a single podcast preview card with image, title, number of seasons,
  * genres (as styled tags), and the last updated date.
@@ -15,23 +15,15 @@ import { formatDate } from "../../utils/formatDate.js";
  *
  * @returns {JSX.Element} The rendered podcast card component.
  */
-export default function PodcastCard({ podcast, genres }) { 
-  const genreSpans = podcast.genres.map((id) => {
-    const match = genres.find((genre) => genre.id === id);
-    return (
-      <span key={id} className="tag">
-        {match ? match.title : `Unknown (${id})`}
-      </span>
-    );
-  });
-
+export default function PodcastCard({ podcast }) { 
+ 
   return (
     <div className="card">
       <img src={podcast.image} alt={podcast.title} />
 
       <h3>{podcast.title}</h3>
       <p className="seasons">{podcast.seasons} seasons</p>
-      <div className="tags">{genreSpans}</div>
+      <div className="tags">{GenreTags}</div>
       <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
     </div>
   );
