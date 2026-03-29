@@ -7,7 +7,7 @@
  * @param {Object} props.podcast - The podcast data object that has genre IDs and other podcast data.
  * @returns {JSX.Element} The mapped genre titles ready to be displayed on the podcast card.
 */
-export default function GenreTags ({ podcast,genres }) {
+export default function GenreTags ({ podcast, genres }) {
    return (
         <div className="tags">
 
