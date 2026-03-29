@@ -1,5 +1,6 @@
 import { formatDate } from "../../utils/formatDate.js";
 import { GenreTags } from "../../components/UI/GenreTags.jsx"
+import { Link } from "react-router-dom";
 /**
  * Renders a single podcast preview card with image, title, number of seasons,
  * genres (as styled tags), and the last updated date.
@@ -18,12 +19,13 @@ export default function PodcastCard({ podcast }) {
  
   return (
     <div className="card">
-      <img src={podcast.image} alt={podcast.title} />
-
-      <h3>{podcast.title}</h3>
-      <p className="seasons">{podcast.seasons} seasons</p>
-      <div className="tags">{GenreTags}</div>
-      <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
+      <Link to = {`/show/:id`}>
+        <img src={podcast.image} alt={podcast.title} />
+        <h3>{podcast.title}</h3>
+        <p className="seasons">{podcast.seasons} seasons</p>
+        <div className="tags">{GenreTags}</div>
+        <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
+      </Link>
     </div>
   );
 }
