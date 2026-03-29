@@ -10,7 +10,7 @@ import { PodcastContext } from '../../context/PodcastContext.jsx';
  */
 
 
-export default function GenreFilter ({genres}) {
+export default function GenreFilter ({genres = []}) {
 
     const  {genre, setGenre } = useContext(PodcastContext);
 

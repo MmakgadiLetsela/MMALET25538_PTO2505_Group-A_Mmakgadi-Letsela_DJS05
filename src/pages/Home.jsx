@@ -27,7 +27,7 @@ export default function Home({ genres }) {
             {loading && <Loading message="Loading podcasts..." />}
             {error && <Error message={`Error occured while fetching podcasts: ${error}`} />}
             {!loading && !error && (
-                <PodcastGrid podcasts={podcasts} genres={genres} />
+                <PodcastGrid podcasts={podcasts} genres={genres || []} />
             )}
         </main>
     );
