@@ -185,40 +185,8 @@ main {
 }
 
 /* Pagination */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 20px;
-}
 
-.pagination-btn {
-  padding: 10px 15px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-}
 
-.pagination-btn:hover:not(:disabled) {
-  background-color: #2980b9;
-}
-
-.pagination-btn:disabled {
-  background-color: #bdc3c7;
-  cursor: not-allowed;
-}
-
-.pagination-info {
-  font-size: 14px;
-  color: #666;
-}
-
-/* Alternative Pagination (if using Pagination component) */
 .pagination-wrapper {
   display: flex;
   justify-content: center;
