@@ -13,7 +13,7 @@ It introduces routing using BrowserRouter in React. Users are able to click on p
 
 
 ## Acknowledements
-This project was completed by Mmakgadi Letsela for DJS04.
+This project was completed by Mmakgadi Letsela for DJS05.
 
 ## Contact Details
 [LinkedIn](https://www.linkedin.com/in/mmakgadi-letsela)
