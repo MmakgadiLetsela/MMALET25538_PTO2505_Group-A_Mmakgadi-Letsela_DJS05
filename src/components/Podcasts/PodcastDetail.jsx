@@ -61,8 +61,8 @@ export default function PodcastDetail({ podcast, genres }) {
 
             <div classname="season-details">
                 <img
-                src={currentSeason.image}
-                alt={currentSeason.title}
+                src={image}
+                alt={podcast.title}
                 className="season=image"
                 />
                 <h3 className="season-title">{currentSeason.title}</h3>

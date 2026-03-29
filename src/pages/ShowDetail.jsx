@@ -14,7 +14,7 @@ import { Loading, Error, PodcastDetail } from '../components';
 export default function ShowDetail() {
     const { id } = useParams();
     const location = useLocation();
-    const { genres } = location.state || {}; 
+    const { image, genres } = location.state || {}; 
 
 
     const [podcast, setPodcast] = useState([]);
@@ -35,9 +35,12 @@ export default function ShowDetail() {
         )}
 
         {!loading && !error && (
-            <PodcastDetail podcast = {podcast} genres = {genres} />
+            <>
+            {image && <img src={image} alt="Podcast Cover" />}
+            <PodcastDetail podcast = {podcast} genres = {genres} image={image} />
+            </>
         )}
-        <Link to ="/" className="back-button"></Link>
+        <Link to ="/" className="back-button">Back</Link>
         </div>
     );
 }
