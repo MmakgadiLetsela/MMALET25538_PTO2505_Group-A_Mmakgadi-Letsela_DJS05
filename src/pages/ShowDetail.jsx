@@ -3,6 +3,13 @@ import { useParams, useLocation } from 'react-router-dom';
 import { fetchSinglePodcast } from '../api/fetchPodcastData.js';
 import { Loading, Error, PodcastDetail } from '../components';
 
+/**
+ *@function ShowDetail
+ * Componenent responsible for displaying detailed single podcast pages.
+ * Shows detailed podcast page when user clicks on podcast preveiw. 
+ * User is able to naviigate back to home page.
+ */
+
 
 export default function ShowDetail() {
     const { id } = useParams();

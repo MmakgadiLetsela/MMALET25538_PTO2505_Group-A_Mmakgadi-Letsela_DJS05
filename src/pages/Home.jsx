@@ -1,4 +1,10 @@
-
+/**
+ * @function Home
+ * Displays the grid layout of the podcast preview cards.
+ * Users can return to the home page after viewing a single podcast detail card. 
+ * @param {Array<Object>} props.genres - Array of genre objects used to map genre IDs to titles.
+ * @returns {JSX.Element} The grid of podcast cards with controls
+ */
 
 
 import { useEffect, useState } from 'react';
