@@ -23,7 +23,13 @@ export async function fetchPodcasts(setPodcasts, setError, setLoading) {
     setLoading(false);
   }
 } 
-
+/**
+ * 
+ * @param {string} id - Unique podcast detailed page id.
+ * @param {Function} setShow - State setter function to update podcast page.
+ * @param {Function} setError - State setter function to update the error message (string).
+ * @param {Function} setLoading State setter function to toggle the loading state (boolean).
+ */
 export async function fetchSinglePodcast(id, setShow, setError, setLoading) {
   try{
     const res = await fetch(`https://podcast-api.netlify.app/id/${id}`);
