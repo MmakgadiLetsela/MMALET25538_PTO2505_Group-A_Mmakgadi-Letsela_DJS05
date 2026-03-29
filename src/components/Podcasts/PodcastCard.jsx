@@ -11,7 +11,6 @@ import { GenreTags } from "../../components/UI/GenreTags.jsx"
  * @param {string} props.podcast.image - URL of the podcast image.
  * @param {number} props.podcast.seasons - Number of seasons available.
  * @param {string} props.podcast.updated - ISO date string for the last update.
- * @param {Array<Object>} props.genres - Array of genre objects for mapping IDs to titles.
  *
  * @returns {JSX.Element} The rendered podcast card component.
  */
