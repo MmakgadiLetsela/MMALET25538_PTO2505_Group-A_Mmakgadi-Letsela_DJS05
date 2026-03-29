@@ -21,10 +21,10 @@ export default function ShowDetail() {
 
     return (
         <>
-        {loading && <Loading message = 'Loading podcast...'/>}
+        {loading && <Loading/>}
 
         {error && (
-            <Error message = {`Error occured while fetching podcast: ${error}`} />
+            <Error message = {error} />
         )}
 
         {!loading && !error && (
