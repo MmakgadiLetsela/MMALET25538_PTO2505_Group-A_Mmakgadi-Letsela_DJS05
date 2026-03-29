@@ -1,5 +1,5 @@
 import { formatDate } from "../../utils/formatDate.js";
-import { GenreTags } from "../../components/UI/GenreTags.jsx"
+import  GenreTags  from "../../components/UI/GenreTags.jsx"
 import { Link } from "react-router-dom";
 /**
  * Renders a single podcast preview card with image, title, number of seasons,

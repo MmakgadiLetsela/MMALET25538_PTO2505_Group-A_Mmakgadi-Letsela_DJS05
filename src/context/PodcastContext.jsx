@@ -24,7 +24,7 @@ export const PodcastContext = createContext();
  * @returns {JSX.Element}
  */
 
-export function PodcastProvider({ children, initialPodcasts }) {
+export function PodcastProvider({ children, initialPodcasts = [] }) {
     const [search, setSearch] = useState('');
     const [sortKey, setSortKey] = useState('date-desc');
     const [genre, setGenre] = useState('all');

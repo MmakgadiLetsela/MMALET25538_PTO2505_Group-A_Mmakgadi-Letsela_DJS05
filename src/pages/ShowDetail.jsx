@@ -1,7 +1,9 @@
 import { useEffect, useState} from 'react' ;
 import { useParams, useLocation } from 'react-router-dom';
 import { fetchSinglePodcast } from '../api/fetchPodcastData.js';
-import { Loading, Error, PodcastDetail } from '../components';
+import   PodcastDetail  from '../components/Podcasts/PodcastDetail.jsx';
+import  Loading  from '../components/UI/Loading.jsx'
+import  Error  from '../components/UI/Error.jsx'
 
 /**
  *@function ShowDetail

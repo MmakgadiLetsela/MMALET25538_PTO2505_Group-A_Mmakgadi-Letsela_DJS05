@@ -9,7 +9,9 @@
 
 import { useEffect, useState } from 'react';
 import { fetchPodcasts } from "../api/fetchPodcastData.js";
-import { Loading, Error, PodcastGrid } from "../components";
+import  Loading  from '../components/UI/Loading.jsx'
+import  Error  from '../components/UI/Error.jsx'
+import  PodcastGrid  from '../components/Podcasts/PodcastGrid.jsx'
 
 export default function Home({ genres }) {
     const [podcasts, setPodcasts] = useState([]);
