@@ -23,12 +23,21 @@ export async function fetchPodcasts(setPodcasts, setError, setLoading) {
     setLoading(false);
   }
 } 
+
+
+
+
 /**
+ * @function fetchSinglePodcast
+ * Asynchronously fetches podcast details from remote API for singular podcasts and updates state.
+ * Handles loading, error and successful data response via provided state setters. 
  * 
  * @param {string} id - Unique podcast detailed page id.
  * @param {Function} setShow - State setter function to update podcast page.
  * @param {Function} setError - State setter function to update the error message (string).
  * @param {Function} setLoading State setter function to toggle the loading state (boolean).
+ * 
+ * @returns {Promise<void>} A promise that resolves when the fetch process completes.
  */
 export async function fetchSinglePodcast(id, setShow, setError, setLoading) {
   try{
