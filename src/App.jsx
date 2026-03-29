@@ -4,6 +4,8 @@ import { genres } from "./data.js";
 import { fetchPodcasts } from "./api/fetchPodcastData.js";
 import Header from "./components/UI/Header.jsx";
 import { PodcastProvider } from "./context/PodcastContext.jsx";
+import { Loading } from "./components/UI/Error.jsx"
+import { Error } from "./components/UI/Loading.jsx"
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
@@ -27,20 +29,9 @@ export default function App() {
     <>
       <Header />
       <main>
-        {loading && (
-          <div className="message-container">
-            <div className="spinner"></div>
-            <p>Loading podcasts...</p>
-          </div>
-        )}
+        {loading && <Loading/>}
 
-        {error && (
-          <div className="message-container">
-            <div className="error">
-              Error occurred while trying fetching podcasts: {error}
-            </div>
-          </div>
-        )}
+        {error && <Error message = {error} />}
 
         {!loading && !error && (
           <PodcastProvider initialPodcasts={podcasts}>
