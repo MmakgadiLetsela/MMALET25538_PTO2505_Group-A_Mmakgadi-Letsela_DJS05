@@ -16,11 +16,11 @@ export default function ShowDetail() {
 
     useEffect(() => {
         fetchSinglePodcast(id, setPodcast, setError, setLoading);
-    }, []);
+    }, [id]);
 
 
     return (
-        <>
+        <div className="show-detail">
         {loading && <Loading/>}
 
         {error && (
@@ -28,8 +28,9 @@ export default function ShowDetail() {
         )}
 
         {!loading && !error && (
-            <PodcastDetail podcast = {podcast} genres = {genres} /> 
+            <PodcastDetail podcast = {podcast} genres = {genres} />
         )}
-        </>
-    )
+        <Link to ="/" className="back-button"></Link>
+        </div>
+    );
 }
