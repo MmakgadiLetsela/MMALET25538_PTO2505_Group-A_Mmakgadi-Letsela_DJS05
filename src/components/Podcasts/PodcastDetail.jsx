@@ -19,7 +19,7 @@ export default function PodcastDetail({ podcast, image }) {
             <Link to ="/" className="back-button">Back</Link>
             <div className="podcast-header">
                   <img src={image} alt={podcast.title} className="podcast-details-image" />
-                <div className="podcast-details">
+                <div className="podcast-header-details">
                     <h2>{podcast.title}</h2>
                     <p className="description">{podcast.description}</p>
                     
@@ -42,7 +42,7 @@ export default function PodcastDetail({ podcast, image }) {
 
                     <div className="podcast-episode">
                         <p className="label">Total Episodes</p>
-                        <div className="label-info">{podcast.seasons.reduce((sum, s) => sum + s.episodes.length, 0)} Episodes</div>
+                        <div className="label-info">{totalEpisodes} Episodes</div>
                     </div>
                 </div>
             </div>
@@ -51,25 +51,31 @@ export default function PodcastDetail({ podcast, image }) {
                 <h3>Current Season</h3>
                 <div className="season-selector">
                     <h3>Browse Seasons</h3>
-                    <ul className="season-menu">
-                        {podcast.seasons.map((season, index) => (
-                        <li key={season.season}>
-                            <button className={index === currentSeasonIndex ? "active" : ""} onClick={() => setCurrentSeasonIndex(index)}>
-                                Season {season.season}
-                            </button>       
-                        </li>  
+                    <select 
+                    id="season-select"
+                    value={currentSeasonIndex}
+                    onChange={(e) => setCurrentSeasonIndex(Number(e.target.value))}
+                    aria-label="Select season"
+                    >
+                        {seasons.map((index)  => (
+                            <option key={seasons.season ?? index} value={index}>
+                                Season {seasons.season ?? index +1}
+                            </option>
                         ))}
-                    </ul>
+                    </select>
                 </div>
             </div>
 
             <div className="season">
-                    <div className="season-header">
-                        <img src={currentSeason.image} alt={currentSeason.title} />
+                <div className="season-header">
+                    <img src={currentSeason.image} alt={currentSeason.title} />
+                    <div>    
                         <h3>{currentSeason.title}</h3>
-                        <p>{totalEpisodes} Episodes</p>
-
+                        <p>{currentSeason.episodes.length} Episodes</p>
                     </div>
+                        
+
+                </div>
               
 
                 <div className="episodes-grid">
@@ -78,7 +84,7 @@ export default function PodcastDetail({ podcast, image }) {
                             <h4>{episode.title}</h4>
                             <p>{episode.description}</p>
                             <p>Episode: {episode.episode}</p>
-                        </div>
+                     </div>
 
                     ))}
                 </div>
