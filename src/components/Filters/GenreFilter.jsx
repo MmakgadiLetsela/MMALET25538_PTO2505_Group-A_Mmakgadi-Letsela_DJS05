@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { PodcastContext } from '../../context/PodcastContext.jsx';
+import { genres } from "../../data.js"
 
 
 /**
@@ -10,7 +11,7 @@ import { PodcastContext } from '../../context/PodcastContext.jsx';
  */
 
 
-export default function GenreFilter ({genres = []}) {
+export default function GenreFilter () {
 
     const  {genre, setGenre } = useContext(PodcastContext);
 

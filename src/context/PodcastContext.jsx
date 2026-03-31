@@ -79,7 +79,8 @@ useEffect(() => {
         }
 
         if (genre !== 'all') {
-            data = data.filter((podcast) => podcast.genres.includes(Number(genre)));
+            const gid = Number(genre);
+            data = data.filter((podcast) => Array.isArray(podcast.genres) && podcast.genres.inclueds(gid));
         } 
 
 

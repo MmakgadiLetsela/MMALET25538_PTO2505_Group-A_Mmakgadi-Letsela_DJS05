@@ -10,19 +10,14 @@ import Pagination from "../../components/UI/Pagination.jsx";
  * Displays a grid layout of podcast preview cards with search, genre filtering, sorting and pagination. 
  * Each card includes podcast details such as title, image, genres, season count, and updated date.
  *
- * @param {Object} props
- * @param {Array<Object>} props.genres - Array of genre objects used to map genre IDs to titles.
- *
  * @returns {JSX.Element} The rendered grid of podcast cards with controls.
  *
  */
-export default function PodcastGrid({ genres }) {
+export default function PodcastGrid() {
   const {
     podcasts,
     allPodcastsCount,
   } = useContext(PodcastContext);
-
- 
 
 console.log("Grid podcasts length:", podcasts.length, "all count:", allPodcastsCount);
 
@@ -32,7 +27,7 @@ console.log("Grid podcasts length:", podcasts.length, "all count:", allPodcastsC
       <div className="controls">
         <SearchBar />
         <div className="filter-container">
-          <GenreFilter genres={genres} />
+          <GenreFilter />
           <SortSelect />
         </div>
       </div>
@@ -44,13 +39,17 @@ console.log("Grid podcasts length:", podcasts.length, "all count:", allPodcastsC
 
       {/* Grid */}
       <div className="grid">
-        {podcasts.map((podcast) => (
-          <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
-        ))}
+        {podcasts.length > 0 ? (
+        podcasts.map((podcast) => (
+          <PodcastCard key={podcast.id} podcast={podcast} />
+        ))
+      ) : (
+        <div className="empty>">No podcasts to show</div>
+      )}
       </div>
 
       {/* Pagination */}
-      <Pagination/>
+      <Pagination total={allPodcastsCount} />
     </div>
   );
 }

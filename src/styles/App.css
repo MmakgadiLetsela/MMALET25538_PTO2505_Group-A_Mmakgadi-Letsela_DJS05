@@ -163,7 +163,7 @@ main {
   color: #666;
 }
 
-.tags {
+.genre-tags {
   margin: 10px 15px;
   display: flex;
   flex-wrap: wrap;

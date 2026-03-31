@@ -13,7 +13,7 @@ import  Loading  from '../components/UI/Loading.jsx'
 import  Error  from '../components/UI/Error.jsx'
 import  PodcastGrid  from '../components/Podcasts/PodcastGrid.jsx'
 
-export default function Home({ genres }) {
+export default function Home() {
     
     const {loading, error, podcasts } =useContext(PodcastContext);
 
@@ -23,7 +23,7 @@ export default function Home({ genres }) {
             {loading && <Loading message="Loading podcasts..." />}
             {error && <Error message={`Error occured while fetching podcasts: ${error}`} />}
             {!loading && !error && podcasts.length > 0 && (
-                <PodcastGrid genres={genres} />
+                <PodcastGrid />
             )}
             {!loading && !error && podcasts.length === 0 && (
                 <div className="empty">No podcasts available</div>

@@ -16,7 +16,7 @@ import  Error  from '../components/UI/Error.jsx'
 export default function ShowDetail() {
     const { id } = useParams();
     const location = useLocation();
-    const { image, genres } = location.state || {}; 
+    const { image } = location.state || {}; 
 
 
     const [podcast, setPodcast] = useState([]);
@@ -39,7 +39,7 @@ export default function ShowDetail() {
             {!loading && !error && (
                 <>
                 {image && <img src={image} alt="Podcast Cover" />}
-                <PodcastDetail podcast={podcast} genres={genres} image={image} />
+                <PodcastDetail podcast={podcast} image={image} />
                 </>
             )}
             <Link to ="/" className="back-button">Back</Link>

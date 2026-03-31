@@ -5,7 +5,7 @@ import GenreTags from '../UI/GenreTags.jsx';
 import { formatDate } from '../../utils/formatDate.js';
 
 
-export default function PodcastDetail({ podcast, genres, image }) {
+export default function PodcastDetail({ podcast, image }) {
     const [currentSeasonIndex, setCurrentSeasonIndex] = useState(0);
 
     const currentSeason = podcast.seasons[currentSeasonIndex];
@@ -22,7 +22,7 @@ export default function PodcastDetail({ podcast, genres, image }) {
                     <div className="tags">
                         <p className="label">Genres</p>
                         <p className="label-info">
-                            <GenreTags ids={podcast.genres} genres={genres} />
+                            <GenreTags ids={podcast.genres} />
                         </p>
                     </div>
                     

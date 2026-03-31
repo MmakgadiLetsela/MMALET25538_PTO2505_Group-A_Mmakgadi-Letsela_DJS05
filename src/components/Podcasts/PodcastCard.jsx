@@ -15,18 +15,18 @@ import { Link } from "react-router-dom";
  *
  * @returns {JSX.Element} The rendered podcast card component.
  */
-export default function PodcastCard({ podcast, genres }) { 
+export default function PodcastCard({ podcast }) { 
  
   return (
     <div className="card">
       <Link to={`/show/${podcast.id}`}
-      state={{ image: podcast.image, genres }}
+      state={{ image: podcast.image }}
       >
         <img src={podcast.image} alt={podcast.title} />
         <h3>{podcast.title}</h3>
         <p className="seasons">{podcast.seasons} seasons</p>
         <div className="tags">
-          <GenreTags ids={podcast.genres} genres={genres} />
+          <GenreTags ids={podcast.genres} />
         </div>
         <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
       </Link>
