@@ -33,12 +33,12 @@ export default function PodcastDetail({ podcast, genres, image }) {
 
                     <div className="podcast-seasons">
                         <p className="label">Total Seasons</p>
-                        <p className="label-info">{podcast.seasons.length}</p>
+                        <p className="label-info">{podcast.seasons.length} Seasons</p>
                     </div>
 
                     <div className="podcast-episode">
                         <p className="label">Total Episodes</p>
-                        <p className="label-info">{podcast.seasons.reduce((sum, s) => sum + s.episodes.length, 0)}</p>
+                        <p className="label-info">{podcast.seasons.reduce((sum, s) => sum + s.episodes.length, 0)} Episodes</p>
                     </div>
                 </div>
             </div>
@@ -59,16 +59,15 @@ export default function PodcastDetail({ podcast, genres, image }) {
                 </div>
             </div>
 
-            <div className="season-details">
-                <img
-                src={currentSeason.image}
-                alt={currentSeason.title}
-                className="season-image"
-                />
-                <h3 className="season-title">{currentSeason.title}</h3>
-                <p>{currentSeason.description}</p>
-                <p>{currentSeason.episodes.length} Episodes</p>
-                
+            <div className="season">
+                {currentSeason.seasons.map((season) => (
+                    <div key={season.season} className="season-header">
+                        <img src={season.image} />
+                        <h3>{season.title}</h3>
+                        <p>{season.episodes.count} Episodes</p>
+
+                    </div>
+                ))}
               
 
                 <div className="episodes-grid">

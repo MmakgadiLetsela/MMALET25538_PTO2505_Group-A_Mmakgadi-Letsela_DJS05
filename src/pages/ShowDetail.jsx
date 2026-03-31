@@ -19,7 +19,7 @@ export default function ShowDetail() {
     const { image, genres } = location.state || {}; 
 
 
-    const [podcast, setPodcast] = useState(null);
+    const [podcast, setPodcast] = useState([]);
     const[loading, setLoading] = useState(true); 
     const [error, setError] = useState(null);
 
@@ -39,7 +39,7 @@ export default function ShowDetail() {
         {!loading && !error && podcast && (
             <>
             {image && <img src={image} alt="Podcast Cover" />}
-            <PodcastDetail podcast = {podcast} genres = {genres} image={image} />
+            <PodcastDetail podcast={podcast} genres={genres} image={image} />
             </>
         )}
         <Link to ="/" className="back-button">Back</Link>

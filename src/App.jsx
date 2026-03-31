@@ -21,8 +21,8 @@ export default function App({ podcasts }) {
     <Header />
     <PodcastProvider initialPodcasts={podcasts}> 
       <Routes>
-        <Route path = "/" element = {<Home /> } /> 
-        <Route path = {`/show/:id`} element = {<ShowDetail />} />
+        <Route path="/" element={<Home /> } /> 
+        <Route path={`/show/:id`} element={<ShowDetail />} />
       </Routes>
     </PodcastProvider>
     </>

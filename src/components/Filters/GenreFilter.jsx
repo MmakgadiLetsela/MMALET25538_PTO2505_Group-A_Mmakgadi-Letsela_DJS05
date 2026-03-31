@@ -18,7 +18,7 @@ export default function GenreFilter ({genres = []}) {
     <select
         value={genre}
         onChange={(e) => setGenre(e.target.value)}
-        className = 'genre-select'
+        className='genre-select'
     >
 
         <option value='all'>All Genres</option>
