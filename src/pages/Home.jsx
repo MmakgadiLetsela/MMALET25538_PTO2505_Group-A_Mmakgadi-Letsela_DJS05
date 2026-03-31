@@ -7,27 +7,26 @@
  */
 
 
-import { useEffect, useState } from 'react';
-import { fetchPodcasts } from "../api/fetchPodcastData.js";
+import { useContext } from 'react';
+import { PodcastContext } from "../context/PodcastContext.jsx";
 import  Loading  from '../components/UI/Loading.jsx'
 import  Error  from '../components/UI/Error.jsx'
 import  PodcastGrid  from '../components/Podcasts/PodcastGrid.jsx'
 
 export default function Home({ genres }) {
-    const [podcasts, setPodcasts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    
+    const {loading, error, podcasts } =useContext(PodcastContext);
 
-    useEffect(()  => {
-        fetchPodcasts(setPodcasts, setError, setLoading);
-    }, []);
 
     return (
         <main>
             {loading && <Loading message="Loading podcasts..." />}
             {error && <Error message={`Error occured while fetching podcasts: ${error}`} />}
-            {!loading && !error && (
-                <PodcastGrid podcasts={podcasts} genres={genres || []} />
+            {!loading && !error && podcasts.length > 0 && (
+                <PodcastGrid genres={genres} />
+            )}
+            {!loading && !error && podcasts.length === 0 && (
+                <div className="empty">No podcasts available</div>
             )}
         </main>
     );

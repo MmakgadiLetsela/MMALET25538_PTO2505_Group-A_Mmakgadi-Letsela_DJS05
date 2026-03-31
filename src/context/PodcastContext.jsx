@@ -1,8 +1,5 @@
-import React, {createContext, useEffect, useState} from 'react';
-
-/**
- *
- */
+import React, {createContext, useEffect, useState, useMemo} from 'react';
+import { fetchPodcasts } from "../api/fetchPodcastData.js";
 
 // eslint-disable-next-line
 export const SORT_OPTIONS = [
@@ -19,26 +16,31 @@ export const PodcastContext = createContext();
 /**
  * PodcastProvider component wraps children in a context with state
  * for searching, sorting, filtering and paginating podcast data.
- * 
- * @param {{children: React.ReactNode, initialPodcasts: Podcast[]}} props
+ * @param {{children: React.ReactNode}} props
  * @returns {JSX.Element}
  */
 
-export function PodcastProvider({ children, initialPodcasts = [] }) {
+export function PodcastProvider({ children }) {
+    const [initialPodcasts, setInitialPodcasts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     const [search, setSearch] = useState('');
     const [sortKey, setSortKey] = useState('date-desc');
     const [genre, setGenre] = useState('all');
     const [page,setPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
-/**
+useEffect(() => {
+    fetchPodcasts(setInitialPodcasts, setError, setLoading);
+}, []);
+
+
+    /**
  * Dynamically calculate how many cards can fit on screen.
  * Set a fixed card of 10 cards for tablet and smaller screens.
  * 
  */
-
-
-
 
     useEffect(() => {
         const calculatePageSize = () => {
@@ -49,11 +51,10 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
                 return;
             }
 
-
             const cardWidth = 250;
             const maxRows = 2;
-            const columns = Math.floor(screenWidth / cardWidth);
-            const pageSize = columns * maxRows;
+            const columns = Math.max(1, Math.floor(screenWidth / cardWidth));
+            const pageSize = (columns * maxRows);
 
             setPageSize(pageSize);
         };
@@ -69,7 +70,7 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
  * @returns {Podcast[]} The filtered and sorted list of podcasts.
  */
 
-    const applyFilters = () => {
+    const filteredPodcasts = useMemo(() => {
         let data = [...initialPodcasts];
 
         if (search.trim()) {
@@ -101,23 +102,25 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
         } // used for sorting the data based on the selected sort key
 
         return data;
-    };
+    },[initialPodcasts, search, genre,sortKey]);
 
-
-    const filteredPodcasts = applyFilters();
     const totalPages = Math.max(1, Math.ceil(filteredPodcasts.length / pageSize));
     const currentPage = Math.min(page, totalPages);
-    const paged = filteredPodcasts.slice(
-    (currentPage - 1) * pageSize, currentPage * pageSize
-    );
+
+    const paged = useMemo(() => {
+        const start = (currentPage - 1) * pageSize;
+        return filteredPodcasts.slice(start, start + pageSize);
+    }, [filteredPodcasts, currentPage, pageSize]);
 
 
     useEffect(() => {
         // eslint-disable-next-line
         setPage(1);
-    }, [search, sortKey, genre]);
+    }, [search, sortKey, genre, pageSize]);
 
     const contextValue = {
+        loading,
+        error,
         search,
         setSearch,
         sortKey,
@@ -130,6 +133,8 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
         podcasts: paged,
         allPodcastsCount: filteredPodcasts.length,
     };
+console.log("PodcastProvider initialPodcasts:", initialPodcasts);
+console.log("search, genre, sortKey, pageSize:", search, genre, sortKey, pageSize);
 
     return (
         <PodcastContext.Provider value={contextValue}>

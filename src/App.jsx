@@ -15,16 +15,16 @@ import { Route, Routes } from "react-router-dom";
  *  
  * @returns {JSX.Element} The application component with routing and context.
  */
-export default function App({ podcasts }) {
+export default function App() {
   return (
     <>
-    <Header />
-    <PodcastProvider initialPodcasts={podcasts}> 
-      <Routes>
-        <Route path="/" element={<Home /> } /> 
-        <Route path={`/show/:id`} element={<ShowDetail />} />
-      </Routes>
-    </PodcastProvider>
+      <Header />
+      <PodcastProvider > 
+        <Routes>
+          <Route path="/" element={<Home /> } /> 
+          <Route path={`/show/:id`} element={<ShowDetail />} />
+        </Routes>
+      </PodcastProvider>
     </>
   );
 }

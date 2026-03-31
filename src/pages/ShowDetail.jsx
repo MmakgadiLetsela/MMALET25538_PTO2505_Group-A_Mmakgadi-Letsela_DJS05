@@ -30,19 +30,19 @@ export default function ShowDetail() {
 
     return (
         <div className="show-detail">
-        {loading && <Loading/>}
+            {loading && <Loading/>}
 
-        {error && (
-            <Error message = {error} />
-        )}
+            {error && (
+                <Error message = {error} />
+            )}
 
-        {!loading && !error && podcast && (
-            <>
-            {image && <img src={image} alt="Podcast Cover" />}
-            <PodcastDetail podcast={podcast} genres={genres} image={image} />
-            </>
-        )}
-        <Link to ="/" className="back-button">Back</Link>
+            {!loading && !error && (
+                <>
+                {image && <img src={image} alt="Podcast Cover" />}
+                <PodcastDetail podcast={podcast} genres={genres} image={image} />
+                </>
+            )}
+            <Link to ="/" className="back-button">Back</Link>
         </div>
     );
 }

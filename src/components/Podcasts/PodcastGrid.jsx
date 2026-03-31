@@ -24,6 +24,7 @@ export default function PodcastGrid({ genres }) {
 
  
 
+console.log("Grid podcasts length:", podcasts.length, "all count:", allPodcastsCount);
 
   return (
     <div className="podcast-grid">
