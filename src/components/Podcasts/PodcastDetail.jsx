@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import GenreTags from '../UI/GenreTags.jsx';
 import { formatDate } from '../../utils/formatDate.js';
+import { Link } from "react-router-dom";
 
 
 export default function PodcastDetail({ podcast, image }) {
@@ -14,6 +15,7 @@ export default function PodcastDetail({ podcast, image }) {
     return (
         <div className="podcast">
             <div className="podcast-header">
+                 <Link to ="/" className="back-button">Back</Link>
                  {image && <img src={image} alt={podcast.title} className="podcast-image" />}
                 <div className="podcast-details">
                     <h2>{podcast.title}</h2>
@@ -21,24 +23,24 @@ export default function PodcastDetail({ podcast, image }) {
                     
                     <div className="tags">
                         <p className="label">Genres</p>
-                        <p className="label-info">
-                            <GenreTags ids={podcast.genres} />
-                        </p>
+                        <div className="label-info">
+                            <GenreTags genres={podcast.genres || []} />
+                        </div>
                     </div>
                     
                     <div className="updated">
                         <p className="label">Last Updated</p>
-                        <p className="label-info">{formatDate(podcast.updated)}</p>
+                        <div className="label-info">{formatDate(podcast.updated)}</div>
                     </div>
 
                     <div className="podcast-seasons">
                         <p className="label">Total Seasons</p>
-                        <p className="label-info">{podcast.seasons.length} Seasons</p>
+                        <div className="label-info">{podcast.seasons.length} Seasons</div>
                     </div>
 
                     <div className="podcast-episode">
                         <p className="label">Total Episodes</p>
-                        <p className="label-info">{podcast.seasons.reduce((sum, s) => sum + s.episodes.length, 0)} Episodes</p>
+                        <div className="label-info">{podcast.seasons.reduce((sum, s) => sum + s.episodes.length, 0)} Episodes</div>
                     </div>
                 </div>
             </div>
@@ -60,14 +62,12 @@ export default function PodcastDetail({ podcast, image }) {
             </div>
 
             <div className="season">
-                {currentSeason.seasons.map((season) => (
-                    <div key={season.season} className="season-header">
-                        <img src={season.image} />
-                        <h3>{season.title}</h3>
-                        <p>{season.episodes.count} Episodes</p>
+                    <div className="season-header">
+                        <img src={currentSeason.image} alt={currentSeason.title} />
+                        <h3>{currentSeason.title}</h3>
+                        <p>{currentSeason.episodes.count} Episodes</p>
 
                     </div>
-                ))}
               
 
                 <div className="episodes-grid">

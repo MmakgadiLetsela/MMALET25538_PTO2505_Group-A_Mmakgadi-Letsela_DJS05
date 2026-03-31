@@ -16,7 +16,9 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element} The rendered podcast card component.
  */
 export default function PodcastCard({ podcast }) { 
- 
+
+  console.log("Card podcast", podcast);
+  
   return (
     <div className="card">
       <Link to={`/show/${podcast.id}`}
@@ -26,7 +28,7 @@ export default function PodcastCard({ podcast }) {
         <h3>{podcast.title}</h3>
         <p className="seasons">{podcast.seasons} seasons</p>
         <div className="tags">
-          <GenreTags ids={podcast.genres} />
+          <GenreTags genres={podcast.genres || []} />
         </div>
         <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
       </Link>
