@@ -23,6 +23,7 @@ export default function PodcastCard({ podcast }) {
     <div className="card">
       <Link to={`/show/${podcast.id}`}
       state={{ image: podcast.image }}
+      className="details-button"
       >
         <img src={podcast.image} alt={podcast.title} />
         <h3>{podcast.title}</h3>

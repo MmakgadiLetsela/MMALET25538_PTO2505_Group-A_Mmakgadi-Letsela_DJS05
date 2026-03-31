@@ -39,7 +39,6 @@ export default function ShowDetail() {
 
             {!loading && !error && (
                 <>
-                {image && <img src={image} alt="Podcast Cover" />}
                 <PodcastDetail podcast={podcast} image={image} />
                 </>
             )}

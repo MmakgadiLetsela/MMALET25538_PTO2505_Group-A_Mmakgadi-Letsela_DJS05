@@ -9,14 +9,16 @@ import { Link } from "react-router-dom";
 export default function PodcastDetail({ podcast, image }) {
     const [currentSeasonIndex, setCurrentSeasonIndex] = useState(0);
 
-    const currentSeason = podcast.seasons[currentSeasonIndex];
+    const seasons = podcast.seasons || [];
+    const currentSeason = seasons[currentSeasonIndex];
+    const totalEpisodes = seasons.reduce((sum, s) => sum + (s.episodes ? s.episodes.length : 0), 0);
 
 
     return (
         <div className="podcast">
+            <Link to ="/" className="back-button">Back</Link>
             <div className="podcast-header">
-                 <Link to ="/" className="back-button">Back</Link>
-                 {image && <img src={image} alt={podcast.title} className="podcast-image" />}
+                  <img src={image} alt={podcast.title} className="podcast-details-image" />
                 <div className="podcast-details">
                     <h2>{podcast.title}</h2>
                     <p className="description">{podcast.description}</p>
@@ -65,7 +67,7 @@ export default function PodcastDetail({ podcast, image }) {
                     <div className="season-header">
                         <img src={currentSeason.image} alt={currentSeason.title} />
                         <h3>{currentSeason.title}</h3>
-                        <p>{currentSeason.episodes.count} Episodes</p>
+                        <p>{totalEpisodes} Episodes</p>
 
                     </div>
               

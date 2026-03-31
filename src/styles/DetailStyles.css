@@ -1,0 +1,41 @@
+/* BASE STYLES */
+
+.podcast{
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    background-color: #ddd;
+}
+
+/* HEADER */
+
+.podcast-header{
+    display: flex;
+    gap: 1rem;
+    border-radius: .75rem;
+    padding: 1rem;
+    box-shadow: 0 .375rem 1.125rem rgba(2,8,23,0.6);
+    margin-bottom: 2rem;
+
+}
+
+/* BACK BUTTON */
+
+.back-button{
+    color: black;
+    background: transparent;
+    padding: .5rem .75rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all .15s ease;
+    font-size: 1.5rem;
+}
+
+/*PODCAST IMAGE*/
+
+.podcast-details-image{
+    width: 25rem;
+    height: 28.125rem;
+    
+}
+
