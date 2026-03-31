@@ -57,9 +57,9 @@ export default function PodcastDetail({ podcast, image }) {
                     onChange={(e) => setCurrentSeasonIndex(Number(e.target.value))}
                     aria-label="Select season"
                     >
-                        {seasons.map((index)  => (
-                            <option key={seasons.season ?? index} value={index}>
-                                Season {seasons.season ?? index +1}
+                        {seasons.map((currentSeasonIndex)  => (
+                            <option key={currentSeasonIndex} value={currentSeasonIndex}>
+                                Season {currentSeasonIndex +1}
                             </option>
                         ))}
                     </select>
